@@ -31,14 +31,19 @@ public class TemasController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@PostMapping
-	public ResponseEntity<Temas> post (@RequestBody Temas tema){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(tema));
-	}
-	
 	@GetMapping("/{id}")
 	public ResponseEntity<Temas> getById(@PathVariable long id){
 		return repository.findById(id).map(obj -> ResponseEntity.ok(obj)).orElse(ResponseEntity.notFound().build());
+	}
+	
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<Temas>> getByName(@PathVariable String nome){
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+	}
+	
+	@PostMapping
+	public ResponseEntity<Temas> post (@RequestBody Temas tema){
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(tema));
 	}
 	
 	@PutMapping
