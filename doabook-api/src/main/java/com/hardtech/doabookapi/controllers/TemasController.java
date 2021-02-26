@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,4 +33,11 @@ public class TemasController {
 	public ResponseEntity<Temas> post (@RequestBody Temas tema){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(tema));
 	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Temas> getById(@PathVariable long id){
+		return repository.findById(id).map(obj -> ResponseEntity.ok(obj)).orElse(ResponseEntity.notFound().build());
+	}
+	
+	
 }
