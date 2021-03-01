@@ -107,4 +107,12 @@ public class Postagens {
 		this.usuario = usuario;
 	}
 
+	public Date getDataPostagem() {
+		return dataPostagem;
+	}
+
+	public void setDataPostagem(Date dataPostagem) {
+		this.dataPostagem = dataPostagem;
+	}
+
 }
