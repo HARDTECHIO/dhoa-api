@@ -4,11 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.URL;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_postagens")
@@ -32,6 +35,10 @@ public class Postagens {
 	@NotNull(message = "O campo CONTATO_URL é obrigatorio")
 	@URL(message = "O campo contato_URL precisa ser uma URL")
 	private String contatoUrl;
+
+	@ManyToOne
+	@JsonIgnoreProperties("postagens")
+	private Temas tema;
 
 	public long getId() {
 		return id;
@@ -71,6 +78,14 @@ public class Postagens {
 
 	public void setContatoUrl(String contatoUrl) {
 		this.contatoUrl = contatoUrl;
+	}
+
+	public Temas getTema() {
+		return tema;
+	}
+
+	public void setTema(Temas tema) {
+		this.tema = tema;
 	}
 
 }
