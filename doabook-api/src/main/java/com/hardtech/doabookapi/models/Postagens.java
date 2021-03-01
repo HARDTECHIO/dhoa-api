@@ -1,11 +1,15 @@
 package com.hardtech.doabookapi.models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -35,6 +39,9 @@ public class Postagens {
 	@NotNull(message = "O campo CONTATO_URL é obrigatorio")
 	@URL(message = "O campo contato_URL precisa ser uma URL")
 	private String contatoUrl;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataPostagem = new java.sql.Date(System.currentTimeMillis());
 
 	@ManyToOne
 	@JsonIgnoreProperties("postagens")
@@ -99,6 +106,5 @@ public class Postagens {
 	public void setUsuario(Usuarios usuario) {
 		this.usuario = usuario;
 	}
-	
 
 }

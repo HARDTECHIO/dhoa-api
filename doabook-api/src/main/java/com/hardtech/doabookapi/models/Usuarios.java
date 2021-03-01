@@ -90,6 +90,5 @@ public class Usuarios {
 	public void setPostagens(List<Postagens> postagens) {
 		this.postagens = postagens;
 	}
-	
 
 }
