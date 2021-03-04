@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.hardtech.doabookapi.models.Usuarios;
 
 public interface UsuariosRepository extends JpaRepository<Usuarios, Long> {
-	Optional<Usuarios> findByUsuarios(String usuario);
+	Optional<Usuarios> findByEmail(String email);
 }
