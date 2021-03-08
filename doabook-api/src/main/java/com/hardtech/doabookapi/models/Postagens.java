@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -37,6 +38,7 @@ public class Postagens {
 	private String imagemUrl;
 
 	@NotNull(message = "O campo CONTATO_URL é obrigatorio")
+	@NotEmpty(message = "O campo CONTATO_URL não pode ser vazio")
 	@URL(message = "O campo contato_URL precisa ser uma URL")
 	private String contatoUrl;
 
