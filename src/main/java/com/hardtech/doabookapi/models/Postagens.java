@@ -25,6 +25,10 @@ public class Postagens {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@NotNull(message = "O campo tipoPostagem é obrigatório")
+	@Size(min=0, max=10, message = "O campo tipoPostagem deve ter entre 0 e 10 caracteres")
+	private String tipoPostagem; 
 
 	@NotNull(message = "O campo TITULO é obrigatório")
 	@Size(min = 4, max = 100, message = "O campo TITULO deve ter entre 4 e 100 caracteres")
@@ -115,6 +119,14 @@ public class Postagens {
 
 	public void setDataPostagem(Date dataPostagem) {
 		this.dataPostagem = dataPostagem;
+	}
+
+	public String getTipoPostagem() {
+		return tipoPostagem;
+	}
+
+	public void setTipoPostagem(String tipoPostagem) {
+		this.tipoPostagem = tipoPostagem;
 	}
 
 }

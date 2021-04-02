@@ -3,6 +3,7 @@ package com.hardtech.doabookapi.models;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +39,9 @@ public class Usuarios {
 
 	@URL(message = "O campo ÍCONE precisa ser uma URL")
 	private String imagemUrl;
+	
+	
+	private String tipoUsuario = "normal";
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("postagens")
@@ -89,6 +93,14 @@ public class Usuarios {
 
 	public void setPostagens(List<Postagens> postagens) {
 		this.postagens = postagens;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 }

@@ -1,7 +1,9 @@
 package com.hardtech.doabookapi.models;
 
 public class UsuariosLogin {
-
+	
+	private long id; 
+	
 	private String nome;
 
 	private String email;
@@ -9,6 +11,10 @@ public class UsuariosLogin {
 	private String senha;
 
 	private String token;
+	
+	private String foto; 
+	
+	private String tipoUsuario;
 
 	public String getNome() {
 		return nome;
@@ -42,4 +48,29 @@ public class UsuariosLogin {
 		this.token = token;
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	
 }

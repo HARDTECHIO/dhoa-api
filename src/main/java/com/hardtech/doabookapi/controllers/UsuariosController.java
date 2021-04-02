@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,4 +50,30 @@ public class UsuariosController {
 	public ResponseEntity<UsuariosLogin> logar(@RequestBody Optional<UsuariosLogin> usuario) {
 		return service.logar(usuario).map(obj -> ResponseEntity.ok(obj)).orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
+	
+	
+	@PutMapping
+	public ResponseEntity<Usuarios> update (@RequestBody Usuarios usuario){
+		Optional<Usuarios> user = service.atualizarUsuario(usuario);
+		
+		try {
+			return ResponseEntity.ok(user.get());
+		}catch (Exception e) {
+			return ResponseEntity.badRequest().build();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
